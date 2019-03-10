@@ -1,0 +1,161 @@
+
+.links{
+    color: white;
+    font-size: 182%;
+}
+.home{
+    padding-right: 3%;
+    padding-left: 3%
+}
+
+.about{
+    border-left: 1px white solid;
+    padding-left: 3%;
+}
+
+.home:hover, .about:hover{
+    text-decoration:none;
+}
+
+.cards{
+    border: 1px black solid;
+    /* margin-bottom: 30px; */
+    text-align: center;
+    margin-bottom: 28px;
+    cursor: pointer
+}
+
+.cards h1{
+    font-size: 33px;
+    font-weight: bold;
+}
+
+.act:visited{
+    color: #cce6ff;
+}
+
+img { 
+  width: 100%;
+}
+
+.element h1{
+    color: #337AB7;
+}
+
+.likes{
+    color: #ff1ac6;
+    float: left;
+    font-size: 14px;
+    background-color: white;
+    margin-bottom: 18px;
+    margin-left: 18px;
+}
+
+.rate{
+    color: green;
+    float: right;
+    font-size: 14px;
+    background-color: white;
+    margin-bottom: 18px;
+    margin-right: 18px;
+}
+
+
+.course-title{
+    color: #337AB7;
+}
+
+.detail{
+    font-size: 25px;
+    margin-left: 68px;
+}
+
+.to-clear{
+    clear: both;
+}
+
+.course-content h1{
+    /* text-align: center; */
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 66px;
+    /* text-decoration: underline; */
+}
+
+.course-content{
+    position: relative;
+}
+
+/* .course-content img{
+    width: 93%;
+    padding-left: 4%;
+} */
+
+#navLinks{
+    margin-bottom: 30px;
+    margin-top: 3px;
+    min-height: 42px;
+}
+
+#content-likes{
+    color: #ff1ac6;
+    float: left;
+    margin-top: 42px;
+    margin-left: 0px;
+}
+
+#content-rate{
+    color: green;
+    float: left;
+    margin-top: 42px;
+    margin-right: 82px;
+}
+
+#content-enroll{
+    color: #2F73E8;
+    float: left;
+    margin-top: 36px;
+    margin-right: 13px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-left: 68px;
+    cursor: pointer;
+    /* z-index: 20; */
+}
+
+#courseImage{
+    /* text-align: center;
+    opacity: 0.3;
+    position: absolute;
+    top: -37px;
+    height: 134%; */
+    text-align: center;
+    opacity: 0.2;
+    position: absolute;
+    top: -14px;
+    height: 134%;
+    border: 2px blue solid;
+    padding: 3%;
+    z-index: -1;
+}
+
+.students{
+    margin-top: 25px;
+}
+
+#contents{
+    position: relative;
+}
+
+.aa {
+    position: absolute;
+    top: 260px;
+}
+.aa p{
+    margin-left: 10px;
+}
+
+.aa span{
+    color: #023359;
+    line-height: 2
+}
