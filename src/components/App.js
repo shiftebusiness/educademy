@@ -1,14 +1,17 @@
 import React from "react";
 import Header from "./common/Header.js";
 import PropTypes from 'prop-types';
+// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 class App extends React.Component{
 
      render(){
         return(
-            <div className="container-fluid">
-                <Header/>
-                {this.props.children}
+            <div id="root">
+                {/* <MuiThemeProvider> */}
+                    <Header/>
+                    {this.props.children}
+                {/* </MuiThemeProvider> */}
             </div>
         );
     }

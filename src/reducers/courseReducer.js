@@ -6,7 +6,7 @@ export default function courseRducer(state=intialState,action){
         case types.LOAD_COURSES_SUCCESS:
         return action.courses;
 
-        case types.LOAD_SELECTED_COURSE_SUCCESS:
+        case types.LIKE_SELECTED_COURSE_SUCCESS:
         return action.course;
 
         // case types.CREATE_COURSE_SUCCESS:
@@ -26,3 +26,4 @@ export default function courseRducer(state=intialState,action){
             
     }
 } 
+// LIKE_SELECTED_COURSE_SUCCESS

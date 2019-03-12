@@ -1,5 +1,4 @@
 import * as types from './actionTypes';
-import CourseApi from '../api/mockCourseApi'; 
 import axios from 'axios';
 
 export function loadCoursesSuccess(courses){
@@ -7,7 +6,12 @@ export function loadCoursesSuccess(courses){
 }
 
 export function loadSelectedCourseSuccess(course){
+    console.log('course in success', course);
     return { type: types.LOAD_SELECTED_COURSE_SUCCESS, course}
+}
+
+export function likeCourseChange(like){
+    return { type: types.LIKE_SELECTED_COURSE_SUCCESS, like}
 }
 
 // export function createCourseSuccess(course){
@@ -36,6 +40,17 @@ export function loadSelectedCourse (selectedId) {
     };
 }
 
+export function likeCourse (selectedId,likeState) {
+    return function(dispatch) {
+        return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/like', {is_liked:likeState,course_id:4223,uid:3001064})
+        // .then(course =>{
+        //     dispatch(loadSelectedCourseSuccess(course));
+        // }).catch(error => {
+        //     throw(error);
+        // });
+    };
+}
+
 
 // export function saveCourse(course) {
 //     return function(dispatch, getState) {
@@ -48,3 +63,13 @@ export function loadSelectedCourse (selectedId) {
 //     };
 // }
 
+// axios.post('/user', {
+//     firstName: 'Fred',
+//     lastName: 'Flintstone'
+// })
+// .then(function (response) {
+//     console.log(response);
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
