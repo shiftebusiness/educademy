@@ -13,8 +13,10 @@ class SeletedCourse extends React.Component{
         this.state={
            loading: true,
            hasLiked:0,
-           enrolled:0
+           enrolled:0,
+           rating:0
         }
+
         this.handleClick=this.handleClick.bind(this);
         this.handleEnroll=this.handleEnroll.bind(this);
     }
@@ -31,15 +33,31 @@ class SeletedCourse extends React.Component{
     }
 
     handleEnroll(){
-        //-----
+        this.props.actions.enrollCourse(this.props.params.id,this.state.enrolled).then(res =>{
+            this.props.actions.enrollCourseChange(!this.state.enrolled);
+            this.setState({enrolled:!this.state.enrolled});
+            }).catch(error => {
+            throw(error);
+        });
     }
-    
+
+    handleRate(nextValue, prevValue, name){
+        this.props.actions.rateCourse(this.props.params.id,this.state.rating).then(res =>{
+            this.props.actions.rateCourseChange(!this.state.rating);
+            this.setState({rating:nextValue});
+            }).catch(error => {
+            throw(error);
+        });
+    }
+
     componentDidMount(){
-        
         this.props.actions.loadSelectedCourse(this.props.params.id).then(res =>{
             console.log('CO', res.data);
             this.props.actions.loadSelectedCourseSuccess(res.data);
-            this.setState({loading: false, hasLiked: this.props.course_item.is_liked});
+            this.setState({ loading: false,
+                            hasLiked: this.props.course_item.is_liked,
+                            enrolled:this.props.course_item.is_enrolled,
+                            rating:this.props.course_item.is_rated});
             console.log("this.props.course.courses.data.is_liked", this.props.course_item.is_liked);
     
 
@@ -48,6 +66,7 @@ class SeletedCourse extends React.Component{
         });
         
     }
+
     render(){
         if (this.state.loading==true) {
             return(
@@ -64,10 +83,10 @@ class SeletedCourse extends React.Component{
                     {console.log("courseDetail.propsEEEEEEE",courseDetail)}
                         <h1 className="text-primary course-content">{courseDetail.title}</h1>
                         {/* <p className="text-info detail" id="content-rate">{courseDetail.rate} rate</p> */}
-                        <Enroll toEnroll={this.handleEnroll} isEnrolled={this.state.enrolled}/>
+                        <Enroll isEnrolled={this.state.enrolled} toEnroll={this.handleEnroll} />
                         {/* <p className="text-info detail" id="content-likes">{courseDetail.likes.count} likes</p> */}
                         <Like isLiked={this.state.hasLiked} clicked={this.handleClick}/>
-                        <Rate />
+                        <Rate rates={this.state.rating} toRate={this.handleRate}/>
                         <div className="to-clear"></div>
                         <p><img id="courseImage" src={'http://shiftdev.net/workspace/plan3/sites/all/themes/shift2014/images//noimg_course_large.png'}/></p>
     
