@@ -3,6 +3,7 @@ import React from "react";
 const Enroll = ({toEnroll,isEnrolled})=>{
 
     if (isEnrolled) {
+        console.log("isEnrolled",isEnrolled);
         return(
             <div>
                 <button className="btn btn-warning" id="content-enroll" onClick={toEnroll}>UNENROLLED</button>

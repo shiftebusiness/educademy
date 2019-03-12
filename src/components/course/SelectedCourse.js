@@ -22,9 +22,9 @@ class SeletedCourse extends React.Component{
     }
 
     handleClick(){
-        console.log("this.props.params.id,this.state.hasLiked,this.props.actions.likeCourseChange",this.props.actions.likeCourseChange,this.props.params.id,this.state.hasLiked)
+        console.log("this.props.params.id,.state.hasLiked,this.props.actions.likeCourseChange",this.props.actions.likeCourseChange,this.props.params.id,this.state.hasLiked)
         this.props.actions.likeCourse(this.props.params.id,this.state.hasLiked).then(res =>{
-            console.log("res",res);
+            console.log("ressssssss",res);
             this.props.actions.likeCourseChange(!this.state.hasLiked);
             this.setState({hasLiked:!this.state.hasLiked});
             }).catch(error => {
@@ -52,13 +52,14 @@ class SeletedCourse extends React.Component{
 
     componentDidMount(){
         this.props.actions.loadSelectedCourse(this.props.params.id).then(res =>{
-            console.log('CO', res.data);
+            console.log('COO', res.data);
             this.props.actions.loadSelectedCourseSuccess(res.data);
             this.setState({ loading: false,
                             hasLiked: this.props.course_item.is_liked,
                             enrolled:this.props.course_item.is_enrolled,
                             rating:this.props.course_item.is_rated});
             console.log("this.props.course.courses.data.is_liked", this.props.course_item.is_liked);
+            console.log("enrolled in cdm", this.props.course_item.is_enrolled);
     
 
         }).catch(error => {

@@ -32,14 +32,14 @@ export function rateCourseChange(rate){
 
 export function loadCourses () {
     return function(dispatch) {
-        return axios.get('http://shiftdev.net/workspace/plan3/appapi/course/home?uid=3001201‏&page_top=1&page_bottom=1&ipp=10')
+        return axios.get('http://localhost:3000/appapi/course/home?uid=3001201&page_top=1&page_bottom=1&ipp=10')
     };
 }
 
-
 export function loadSelectedCourse (selectedId) {
     return function(dispatch) {
-        return axios.get('http://shiftdev.net/workspace/plan3/appapi/course/item?cid='+selectedId)
+        console.log('sel id', selectedId);
+        return axios.get('http://localhost:3000/appapi/course/item?uid=3001201‏&cid='+selectedId);
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
         // }).catch(error => {
@@ -50,10 +50,10 @@ export function loadSelectedCourse (selectedId) {
 
 export function likeCourse (selectedId,likeState) {
     return function(dispatch) {
-        if (likeState) {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/like', {is_liked:1,course_id:selectedId,uid:3001064})
+        if (!likeState) {
+            return axios.post('http://localhost:3000/appapi/course/like', {course_id:selectedId,uid:3001201})
         } else {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/unlike', {is_liked:0,course_id:selectedId,uid:3001064})
+            return axios.post('http://localhost:3000/appapi/course/unlike', {course_id:selectedId,uid:3001201})
         }
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
@@ -66,9 +66,9 @@ export function likeCourse (selectedId,likeState) {
 export function enrollCourse (selectedId,enrollState) {
     return function(dispatch) {
         if (enrollState) {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/enrol', {is_enrolled:1,course_id:selectedId,uid:3001064})
+            return axios.post('http://localhost:3000/appapi/course/enrol', {course_id:selectedId,uid:3001201})
         } else {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/unenrol', {is_enrolled:0,course_id:selectedId,uid:3001064})
+            return axios.post('http://localhost:3000/appapi/course/unenrol', {course_id:selectedId,uid:3001201})
         }
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
@@ -81,9 +81,9 @@ export function enrollCourse (selectedId,enrollState) {
 export function rateCourse (selectedId,rateState) {
     return function(dispatch) {
         if (enrollState) {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/enrol', {user_rate:rateState ,course_id:selectedId ,uid:3001064})
+            return axios.post('http://localhost:3000/appapi/course/enrol', {user_rate:rateState ,course_id:selectedId ,uid:3001201})
         } else {
-            return axios.post('http://shiftdev.net/workspace/plan3/appapi/course/unenrol', {user_rate:rateState ,course_id:selectedId,uid:3001064})
+            return axios.post('http://localhost:3000/appapi/course/unenrol', {user_rate:rateState ,course_id:selectedId,uid:3001201})
         }
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
@@ -93,25 +93,3 @@ export function rateCourse (selectedId,rateState) {
     };
 }
 
-
-// export function saveCourse(course) {
-//     return function(dispatch, getState) {
-//         return CourseApi.saveCourse(course).then(savedCourse =>{
-//            course.id ? dispatch(updateCourseSuccess(savedCourse)) :
-//             dispatch(createCourseSuccess(savedCourse));
-//         }).catch(error => {
-//             throw(error);
-//         });
-//     };
-// }
-
-// axios.post('/user', {
-//     firstName: 'Fred',
-//     lastName: 'Flintstone'
-// })
-// .then(function (response) {
-//     console.log(response);
-// })
-// .catch(function (error) {
-//     console.log(error);
-// });
