@@ -19,8 +19,8 @@ const compiler = webpack(config);
 
 async function postAPI(req, res, next) {
     const route = req.originalUrl;
-    console.log('ROUTE:: ', route);
-    console.log('BODY:: ', req.body);
+    // console.log('ROUTE:: ', route);
+    // console.log('BODY:: ', req.body);
     const result = await axios.post('http://shiftdev.net/workspace/plan3/' + route, req.body);
     console.log('RESULT ', result.data);
     res.send(result.data) ;
@@ -28,8 +28,8 @@ async function postAPI(req, res, next) {
 
 async function getAPI(req, res, next) {
     const route = req.originalUrl;
-    console.log('ROUTE:: ', route);
-    console.log('QUERY PARAMS:: ', req.query);
+    // console.log('ROUTE:: ', route);
+    // console.log('QUERY PARAMS:: ', req.query);
     const result = await axios.get('http://shiftdev.net/workspace/plan3/' + route, {params: req.query});
     console.log('RESULT ', result.data);
     res.send(result.data) ;
