@@ -5,13 +5,13 @@ const Enroll = ({toEnroll,isEnrolled})=>{
     if (isEnrolled) {
         return(
             <div>
-                <button className="btn btn-warning" id="content-enroll" onClick={toEnroll}>UNLIKE</button>
+                <button className="btn btn-warning" id="content-enroll" onClick={toEnroll}>UNENROLLED</button>
             </div>
         );
     } else {
         return(
             <div>
-                <button className="btn btn-warning" id="content-enroll" onClick={toEnroll}>LIKE</button>
+                <button className="btn btn-warning" id="content-enroll" onClick={toEnroll}>ENROLLED</button>
             </div>
         );
     }

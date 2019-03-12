@@ -7,23 +7,13 @@ export default function courseRducer(state=intialState,action){
         return action.courses;
 
         case types.LIKE_SELECTED_COURSE_SUCCESS:
-        return action.course;
+        return action.like;
 
-        // case types.CREATE_COURSE_SUCCESS:
-        // return [
-        //     ...state,
-        //     Object.assign({},action.course)
-        // ];
-        
-        // case types.CREATE_COURSE_SUCCESS:
-        // return [
-        //     ...state.filter(course => course.id != action.course.id),
-        //     Object.assign({},action.course)
-        // ];
-        
+        case types.ENROLL_SELECTED_COURSE_SUCCESS:
+        return action.enroll;
+
         default:
         return state;
             
     }
 } 
-// LIKE_SELECTED_COURSE_SUCCESS
