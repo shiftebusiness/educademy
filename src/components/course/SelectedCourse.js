@@ -87,7 +87,7 @@ class SeletedCourse extends React.Component{
             return(
                 <div>
                     <div className="course-content">
-                    {console.log("courseDetail.propsEEEEEEE",courseDetail)}
+                    {console.log("courseDetailllllllllllllllllllll",courseDetail)}
                         <h1 className="text-primary course-content">{courseDetail.title}</h1>
                         {/* <p className="text-info detail" id="content-rate">{courseDetail.rate} rate</p> */}
                         <Enroll isEnrolled={this.state.enrolled} toEnroll={this.handleEnroll} />
