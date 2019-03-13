@@ -19,7 +19,7 @@ export function enrollCourseChange(enroll){
 }
 
 export function rateCourseChange(rate){
-    return { type: types.ENROLL_SELECTED_COURSE_SUCCESS, rate}
+    return { type: types.RATE_SELECTED_COURSE_SUCCESS, rate}
 }
 
 // export function createCourseSuccess(course){
@@ -39,7 +39,7 @@ export function loadCourses () {
 export function loadSelectedCourse (selectedId) {
     return function(dispatch) {
         console.log('sel id', selectedId);
-        return axios.get('http://localhost:3000/appapi/course/item?uid=3001201‏&cid='+selectedId);
+        return axios.get('http://localhost:3000/appapi/course/item?uid=3001201&cid='+selectedId);
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
         // }).catch(error => {
@@ -65,7 +65,7 @@ export function likeCourse (selectedId,likeState) {
 
 export function enrollCourse (selectedId,enrollState) {
     return function(dispatch) {
-        if (enrollState) {
+        if (!enrollState) {
             return axios.post('http://localhost:3000/appapi/course/enrol', {course_id:selectedId,uid:3001201})
         } else {
             return axios.post('http://localhost:3000/appapi/course/unenrol', {course_id:selectedId,uid:3001201})
@@ -80,11 +80,13 @@ export function enrollCourse (selectedId,enrollState) {
 
 export function rateCourse (selectedId,rateState) {
     return function(dispatch) {
-        if (enrollState) {
-            return axios.post('http://localhost:3000/appapi/course/enrol', {user_rate:rateState ,course_id:selectedId ,uid:3001201})
-        } else {
-            return axios.post('http://localhost:3000/appapi/course/unenrol', {user_rate:rateState ,course_id:selectedId,uid:3001201})
-        }
+            return axios.post('http://localhost:3000/appapi/course/rate', {course_id:selectedId ,uid:3001201,
+            rateinput1:rateState,
+            rateinput2:rateState,
+            rateinput3:rateState,
+            rateinput4:rateState,
+            rateinput5:rateState,
+            comment_rate:null})
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
         // }).catch(error => {
@@ -92,4 +94,3 @@ export function rateCourse (selectedId,rateState) {
         // });
     };
 }
-

@@ -19,10 +19,9 @@ class SeletedCourse extends React.Component{
 
         this.handleClick=this.handleClick.bind(this);
         this.handleEnroll=this.handleEnroll.bind(this);
+        this.handleRate=this.handleRate.bind(this);
     }
-
     handleClick(){
-        console.log("this.props.params.id,.state.hasLiked,this.props.actions.likeCourseChange",this.props.actions.likeCourseChange,this.props.params.id,this.state.hasLiked)
         this.props.actions.likeCourse(this.props.params.id,this.state.hasLiked).then(res =>{
             console.log("ressssssss",res);
             this.props.actions.likeCourseChange(!this.state.hasLiked);
@@ -42,9 +41,14 @@ class SeletedCourse extends React.Component{
     }
 
     handleRate(nextValue, prevValue, name){
-        this.props.actions.rateCourse(this.props.params.id,this.state.rating).then(res =>{
-            this.props.actions.rateCourseChange(!this.state.rating);
+        console.log("this.props--",this.props.course_item.rate);
+        console.log("nextValue--",nextValue);
+        this.setState({rating:nextValue});
+        console.log("this.state.rating--",this.state.rating);
+        this.props.actions.rateCourse(this.props.params.id,nextValue).then(res =>{
+            this.props.actions.rateCourseChange(nextValue);
             this.setState({rating:nextValue});
+            // console.log("this.state.rating--",this.state.rating);
             }).catch(error => {
             throw(error);
         });
@@ -52,14 +56,15 @@ class SeletedCourse extends React.Component{
 
     componentDidMount(){
         this.props.actions.loadSelectedCourse(this.props.params.id).then(res =>{
-            console.log('COO', res.data);
+            console.log('this.props.course_item.rate*******', this.props.course_item.rate);
             this.props.actions.loadSelectedCourseSuccess(res.data);
             this.setState({ loading: false,
                             hasLiked: this.props.course_item.is_liked,
                             enrolled:this.props.course_item.is_enrolled,
-                            rating:this.props.course_item.is_rated});
+                            rating:this.props.course_item.rate});
             console.log("this.props.course.courses.data.is_liked", this.props.course_item.is_liked);
             console.log("enrolled in cdm", this.props.course_item.is_enrolled);
+            console.log("this.props.course_item.is_rated", this.props.course_item.is_enrolled);
     
 
         }).catch(error => {
@@ -69,6 +74,7 @@ class SeletedCourse extends React.Component{
     }
 
     render(){
+
         if (this.state.loading==true) {
             return(
                 <div className="container-fluid">

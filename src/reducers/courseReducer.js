@@ -12,6 +12,9 @@ export default function courseRducer(state=intialState,action){
         case types.ENROLL_SELECTED_COURSE_SUCCESS:
         return action.enroll;
 
+        case types.RATE_SELECTED_COURSE_SUCCESS:
+        return action.rate;
+
         default:
         return state;
             
