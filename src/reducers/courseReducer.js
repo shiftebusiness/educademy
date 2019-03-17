@@ -15,6 +15,13 @@ export default function courseRducer(state=intialState,action){
         case types.RATE_SELECTED_COURSE_SUCCESS:
         return action.rate;
 
+        case types.LOAD_COURSE_COMMENT_SUCCESS:
+        return action.comment;
+
+        case types.LOAD_MY_COURSES_SUCCESS:
+        return action.myCourses;
+
+
         default:
         return state;
             

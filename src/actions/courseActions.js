@@ -22,17 +22,27 @@ export function rateCourseChange(rate){
     return { type: types.RATE_SELECTED_COURSE_SUCCESS, rate}
 }
 
-// export function createCourseSuccess(course){
-//     return { type: types.CREATE_COURSE_SUCCESS, course}
-// }
+export function loadCourseCommentsChange(comment){
+    return { type: types.LOAD_COURSE_COMMENT_SUCCESS, comment}
+}
 
-// export function updateCourseSuccess(course){
-//     return { type: types.UPDATE_COURSE_SUCCESS, course}
-// }
+export function loadMyCoursesSuccess(myCourses){
+    return { type: types.LOAD_MY_COURSES_SUCCESS, myCourses}
+}
+
+
+
+
 
 export function loadCourses () {
     return function(dispatch) {
         return axios.get('http://localhost:3000/appapi/course/home?uid=3001201&page_top=1&page_bottom=1&ipp=10')
+    };
+}
+
+export function loadMyCourses () {
+    return function(dispatch) {
+        return axios.get('http://localhost:3000/appapi/user/mycourses?uid=3001201')
     };
 }
 
@@ -87,6 +97,18 @@ export function rateCourse (selectedId,rateState) {
             rateinput4:rateState,
             rateinput5:rateState,
             comment_rate:null})
+        // .then(course =>{
+        //     dispatch(loadSelectedCourseSuccess(course));
+        // }).catch(error => {
+        //     throw(error);
+        // });
+    };
+}
+
+export function loadCourseComments (selectedNid) {
+    return function(dispatch) {
+        // console.log('sel id', selectedId);
+        return axios.get('http://localhost:3000/appapi/item/comments?no_limit1&nid='+selectedNid);
         // .then(course =>{
         //     dispatch(loadSelectedCourseSuccess(course));
         // }).catch(error => {
